@@ -17,21 +17,25 @@ angular.module('myApp.view1', ['ngRoute'])
         group1 : [
             {
                 name : 'someName',
-                surname: 'someSurname'
+                surname: 'someSurname',
+                tel : 1
             },
             {
                 name : 'someName2',
-                surname: 'someSurname2'
+                surname: 'someSurname2',
+                tel : 2
             }
         ],
         group2 : [
             {
                 name : 'someName3',
-                surname: 'someSurname3'
+                surname: 'someSurname3',
+                tel : 3
             },
             {
                 name : 'someName4',
-                surname: 'someSurname4'
+                surname: 'someSurname4',
+                tel : 4
             }
         ]
     };
@@ -73,6 +77,7 @@ angular.module('myApp.view1', ['ngRoute'])
         $scope.saveNewContactFn   = this.saveNewContact.bind( this );
         $scope.addNewGroupFn      = this.addNewGroup.bind( this );
         $scope.saveNewGroupFn     = this.saveNewGroup.bind( this );
+        $scope.cancelSaveFn       = this.cancelSave.bind( this );
     }
 
     /**
@@ -171,6 +176,14 @@ angular.module('myApp.view1', ['ngRoute'])
      */
     SimpleCtrl.prototype.changeChosenGroup = function() {
         $scope.chosenContact = $scope.chosenGroup[ 0 ];
+    };
+
+    /**
+     * cancel save mode
+     */
+    SimpleCtrl.prototype.cancelSave = function() {
+        $scope.isNewModeActive = false;
+        $scope.isNewGroupModeActive = false;
     };
 
     return new SimpleCtrl();

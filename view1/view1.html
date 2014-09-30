@@ -1,99 +1,183 @@
 
-<!--------------------------------- BUTTONS --------------------------------->
-<div>
-    <button ng-show="!isNewGroupModeActive && !isNewModeActive" ng-click="addNewGroupFn()">Add new Group</button>
-    <button ng-show="!isNewModeActive && !isNewGroupModeActive" ng-click="addNewContactFn()">Add new Contact</button>
-
-    <button ng-show="isNewGroupModeActive" ng-click="saveNewGroupFn()">Save group</button>
-    <button ng-show="isNewModeActive" ng-click="saveNewContactFn()">Save Contact</button>
-</div>
-
 <!--------------------------------- EDIT MODES --------------------------------->
-<div ng-show="isNewModeActive">
+<div ng-show="isNewModeActive" >
     <!--name-->
-    <label>New name: </label>
-    <input ng-model="newContact.name">
+    <div class="control-group row" >
+        <div class="col-lg-2 col-md-1 col-sm-3 col-xs-4">
+            <label>New name: </label>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6">
+            <input class="form-control" ng-model="newContact.name">
+        </div>
+    </div>
     <br>
 
     <!--surname-->
-    <label>New surname: </label>
-    <input ng-model="newContact.surname">
+    <div class="control-group row" >
+        <div class="col-lg-2 col-md-1 col-sm-3 col-xs-4">
+            <label>New surname: </label>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6">
+            <input class="form-control" ng-model="newContact.surname">
+        </div>
+    </div>
     <br>
 
+
+
     <!--tel-->
-    <label>New telephone: </label>
-    <input ng-model="newContact.tel">
+    <div class="control-group row" >
+        <div class="col-lg-2 col-md-1 col-sm-3 col-xs-4">
+            <label>New telephone: </label>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6">
+            <input class="form-control" ng-model="newContact.tel">
+        </div>
+    </div>
     <br>
 
     <!--group-->
-    <label>Choose group: </label>
-    <select
-            ng-model="newGroup"
-            ng-options="group for group in groups"
-            ></select>
+    <div class="control-group row" >
+
+        <div class="col-lg-2 col-md-1 col-sm-3 col-xs-4">
+            <label class="control-label">Choose group: </label>
+        </div>
+
+        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6">
+            <select class="form-control"
+                    ng-model="newGroup"
+                    ng-options="group for group in groups"
+                    ></select>
+        </div>
+    </div>
     <br>
 </div>
 
 <div ng-show="isNewGroupModeActive">
-    <input ng-model="newGroup">
+
+    <div class="control-group row" >
+        <div class="col-lg-2 col-md-2 col-sm-3 col-xs-4">
+            <label class="control-label">New group: </label>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6">
+            <input class="form-control" ng-model="newGroup">
+        </div>
+    </div>
+    <br>
+
 </div>
 
+
 <!--------------------------------- CONTACTS MENU --------------------------------->
-<div ng-show="!isNewModeActive && !isNewGroupModeActive" class="someMenu" style="display: inline-block; width: 30%;">
+<div ng-show="!isNewModeActive && !isNewGroupModeActive" class="someMenu" style="display: inline-block; width: 30%; margin-right: 10px; padding-right: 10px; border-right: 1px solid #a7a7a7">
     <div class="searchBox">
         <!--select for groups-->
-        <label>Choose group: </label>
-        <select
-                ng-model="chosenGroup"
-                ng-options="key for (key , value) in model"
-                ng-change="changeChosenGroupFn()"
-        ></select>
+        <div class="control-group row">
+            <div class="col-lg-6 col-md-1 col-sm-3 col-xs-4">
+                <label>Choose group: </label>
+            </div>
+            <div class="col-lg-6 col-md-4 col-sm-6 col-xs-6">
+                <select
+                        class="form-control"
+                        ng-model="chosenGroup"
+                        ng-options="key for (key , value) in model"
+                        ng-change="changeChosenGroupFn()"
+                ></select>
+            </div>
+        </div>
+        <br>
+
+        <div class="control-group row">
+            <div class="col-lg-6 col-md-1 col-sm-3 col-xs-4">
+                <label>Search contact: </label>
+            </div>
+            <div class="col-lg-6 col-md-4 col-sm-6 col-xs-6">
+                <input class="form-control" ng-model="filterName">
+            </div>
+        </div>
 
         <br>
-        <!--TODO: select for name/surname-->
-        <label>search contact: </label>
-        <input ng-model="filterName">
 
-        <br>
-        <label>Choose contact: </label>
-        <select
-                ng-model="chosenContact"
-                ng-options="obj.name for obj in chosenGroup | filter:filterName"
-        ></select>
+        <div class="control-group row">
+            <div class="col-lg-6 col-md-1 col-sm-3 col-xs-4">
+                <label>Choose contact: </label>
+            </div>
+            <div class="col-lg-6 col-md-4 col-sm-6 col-xs-6">
+                <select
+                        class="form-control"
+                        ng-model="chosenContact"
+                        ng-options="obj.name for obj in chosenGroup | filter:filterName"
+                ></select>
+            </div>
+        </div>
+    </div>
 
-        <!--<ul class="contacts">-->
-            <!--<li ng-repeat="key for (key , value) in chosenGroup">-->
-                <!--{{contacts.name}}-->
-            <!--</li>-->
-        <!--</ul>-->
+    <div class="spacer"></div>
+    <div class="row text-center">
+        <button class="btn btn-default" ng-show="!isNewGroupModeActive && !isNewModeActive" ng-click="addNewGroupFn()">Add new Group</button>
+        <button class="btn btn-default" ng-show="!isNewModeActive && !isNewGroupModeActive" ng-click="addNewContactFn()">Add new Contact</button>
     </div>
 </div>
 
+<!--------------------------------- BUTTONS --------------------------------->
+<button class="btn btn-default" ng-show="isNewGroupModeActive" ng-click="saveNewGroupFn()">Save group</button>
+<button class="btn btn-default" ng-show="isNewModeActive" ng-click="saveNewContactFn()">Save Contact</button>
+<button class="btn btn-default" ng-show="isNewGroupModeActive || isNewModeActive" ng-click="cancelSaveFn()">Cancel</button>
+
 <!--------------------------------- CONTACT DETAILS --------------------------------->
-<div ng-show="!isNewModeActive && !isNewGroupModeActive" class="details" style="display: inline-block; width: 30%;">
+<div ng-show="!isNewModeActive && !isNewGroupModeActive" class="details" style="display: inline-block; width: 50%; vertical-align: top;">
+    <div class="control-group row">
+        <div class="col-lg-2 col-md-1 col-sm-3 col-xs-4">
+            <label class="control-label">Name: </label>
+        </div>
+        <div class="col-lg-6 col-md-4 col-sm-6 col-xs-6">
+             <input class="form-control" ng-model="chosenContact.name">
+        </div>
+    </div>
+    <br>
 
-    <label>Name: </label>
-    <input ng-model="chosenContact.name">
+    <div class="control-group row">
+        <div class="col-lg-2 col-md-1 col-sm-3 col-xs-4">
+            <label class="control-label">Surname: </label>
+        </div>
+        <div class="col-lg-6 col-md-4 col-sm-6 col-xs-6">
+            <input class="form-control" ng-model="chosenContact.surname">
+        </div>
+    </div>
 
     <br>
-    <label>Surname: </label>
-    <input ng-model="chosenContact.surname">
+
+    <div class="control-group row">
+        <div class="col-lg-2 col-md-1 col-sm-3 col-xs-4">
+            <label class="control-label">Mobile: </label>
+        </div>
+        <div class="col-lg-6 col-md-4 col-sm-6 col-xs-6">
+            <input class="form-control" ng-model="chosenContact.tel">
+        </div>
+    </div>
 
     <br>
-    <label>Mobile: </label>
-    <input ng-model="chosenContact.tel">
 
-    <br>
-    <label>Change group: </label>
-    <select
-            ng-model="changedGroup"
-            ng-options="group for group in groups"
-            ng-change="changeGtoupFn( changedGroup )"
-            ></select>
+    <div class="control-group row">
+        <div class="col-lg-2 col-md-1 col-sm-3 col-xs-4">
+            <label class="control-label">Change group: </label>
+        </div>
+        <div class="col-lg-6 col-md-4 col-sm-6 col-xs-6">
+            <select
+                    class="form-control"
+                    ng-model="changedGroup"
+                    ng-options="group for group in groups"
+                    ng-change="changeGtoupFn( changedGroup )"
+                    ></select>
+        </div>
+    </div>
 </div>
 
 
+
+
+
 <!--------------------------------- MODEL --------------------------------->
-<pre> {{model | json}} </pre>
+<!--<pre> {{model | json}} </pre>-->
 
 
