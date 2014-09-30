@@ -78,6 +78,7 @@ angular.module('myApp.view1', ['ngRoute'])
         $scope.addNewGroupFn      = this.addNewGroup.bind( this );
         $scope.saveNewGroupFn     = this.saveNewGroup.bind( this );
         $scope.cancelSaveFn       = this.cancelSave.bind( this );
+        $scope.deleteContactFn    = this.deleteContact.bind( this );
     }
 
     /**
@@ -184,6 +185,13 @@ angular.module('myApp.view1', ['ngRoute'])
     SimpleCtrl.prototype.cancelSave = function() {
         $scope.isNewModeActive = false;
         $scope.isNewGroupModeActive = false;
+    };
+
+    SimpleCtrl.prototype.deleteContact = function() {
+
+        $scope.chosenGroup.splice( $scope.chosenGroup.indexOf( $scope.chosenContact ), 1 );
+        $scope.chosenContact = {};
+
     };
 
     return new SimpleCtrl();
