@@ -1,0 +1,99 @@
+
+<!--------------------------------- BUTTONS --------------------------------->
+<div>
+    <button ng-show="!isNewGroupModeActive && !isNewModeActive" ng-click="addNewGroupFn()">Add new Group</button>
+    <button ng-show="!isNewModeActive && !isNewGroupModeActive" ng-click="addNewContactFn()">Add new Contact</button>
+
+    <button ng-show="isNewGroupModeActive" ng-click="saveNewGroupFn()">Save group</button>
+    <button ng-show="isNewModeActive" ng-click="saveNewContactFn()">Save Contact</button>
+</div>
+
+<!--------------------------------- EDIT MODES --------------------------------->
+<div ng-show="isNewModeActive">
+    <!--name-->
+    <label>New name: </label>
+    <input ng-model="newContact.name">
+    <br>
+
+    <!--surname-->
+    <label>New surname: </label>
+    <input ng-model="newContact.surname">
+    <br>
+
+    <!--tel-->
+    <label>New telephone: </label>
+    <input ng-model="newContact.tel">
+    <br>
+
+    <!--group-->
+    <label>Choose group: </label>
+    <select
+            ng-model="newGroup"
+            ng-options="group for group in groups"
+            ></select>
+    <br>
+</div>
+
+<div ng-show="isNewGroupModeActive">
+    <input ng-model="newGroup">
+</div>
+
+<!--------------------------------- CONTACTS MENU --------------------------------->
+<div ng-show="!isNewModeActive && !isNewGroupModeActive" class="someMenu" style="display: inline-block; width: 30%;">
+    <div class="searchBox">
+        <!--select for groups-->
+        <label>Choose group: </label>
+        <select
+                ng-model="chosenGroup"
+                ng-options="key for (key , value) in model"
+                ng-change="changeChosenGroupFn()"
+        ></select>
+
+        <br>
+        <!--TODO: select for name/surname-->
+        <label>search contact: </label>
+        <input ng-model="filterName">
+
+        <br>
+        <label>Choose contact: </label>
+        <select
+                ng-model="chosenContact"
+                ng-options="obj.name for obj in chosenGroup | filter:filterName"
+        ></select>
+
+        <!--<ul class="contacts">-->
+            <!--<li ng-repeat="key for (key , value) in chosenGroup">-->
+                <!--{{contacts.name}}-->
+            <!--</li>-->
+        <!--</ul>-->
+    </div>
+</div>
+
+<!--------------------------------- CONTACT DETAILS --------------------------------->
+<div ng-show="!isNewModeActive && !isNewGroupModeActive" class="details" style="display: inline-block; width: 30%;">
+
+    <label>Name: </label>
+    <input ng-model="chosenContact.name">
+
+    <br>
+    <label>Surname: </label>
+    <input ng-model="chosenContact.surname">
+
+    <br>
+    <label>Mobile: </label>
+    <input ng-model="chosenContact.tel">
+
+    <br>
+    <label>Change group: </label>
+    <select
+            ng-model="changedGroup"
+            ng-options="group for group in groups"
+            ng-change="changeGtoupFn( changedGroup )"
+            ></select>
+</div>
+
+
+<!--------------------------------- MODEL --------------------------------->
+<pre> {{model | json}} </pre>
+
+
