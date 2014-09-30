@@ -3,10 +3,10 @@
 <div ng-show="isNewModeActive" >
     <!--name-->
     <div class="control-group row" >
-        <div class="col-lg-2 col-md-1 col-sm-3 col-xs-4">
+        <div class="col-lg-2 col-md-1 col-sm-6 col-xs-8 ">
             <label>New name: </label>
         </div>
-        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6">
+        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-8 ">
             <input class="form-control" ng-model="newContact.name">
         </div>
     </div>
@@ -14,10 +14,10 @@
 
     <!--surname-->
     <div class="control-group row" >
-        <div class="col-lg-2 col-md-1 col-sm-3 col-xs-4">
+        <div class="col-lg-2 col-md-1 col-sm-6 col-xs-8 ">
             <label>New surname: </label>
         </div>
-        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6">
+        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-8 ">
             <input class="form-control" ng-model="newContact.surname">
         </div>
     </div>
@@ -27,10 +27,10 @@
 
     <!--tel-->
     <div class="control-group row" >
-        <div class="col-lg-2 col-md-1 col-sm-3 col-xs-4">
+        <div class="col-lg-2 col-md-1 col-sm-6 col-xs-8 ">
             <label>New telephone: </label>
         </div>
-        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6">
+        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-8 ">
             <input class="form-control" ng-model="newContact.tel">
         </div>
     </div>
@@ -39,11 +39,11 @@
     <!--group-->
     <div class="control-group row" >
 
-        <div class="col-lg-2 col-md-1 col-sm-3 col-xs-4">
+        <div class="col-lg-2 col-md-1 col-sm-6 col-xs-8 ">
             <label class="control-label">Choose group: </label>
         </div>
 
-        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6">
+        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-8 ">
             <select class="form-control"
                     ng-model="newGroup"
                     ng-options="group for group in groups"
@@ -56,10 +56,10 @@
 <div ng-show="isNewGroupModeActive">
 
     <div class="control-group row" >
-        <div class="col-lg-2 col-md-2 col-sm-3 col-xs-4">
+        <div class="col-lg-2 col-md-2 col-sm-6 col-xs-8 ">
             <label class="control-label">New group: </label>
         </div>
-        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6">
+        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-8 ">
             <input class="form-control" ng-model="newGroup">
         </div>
     </div>
@@ -73,10 +73,10 @@
     <div class="searchBox">
         <!--select for groups-->
         <div class="control-group row">
-            <div class="col-lg-6 col-md-1 col-sm-3 col-xs-4">
+            <div class="col-lg-6 col-md-1 col-sm-6 col-xs-8 ">
                 <label>Choose group: </label>
             </div>
-            <div class="col-lg-6 col-md-4 col-sm-6 col-xs-6">
+            <div class="col-lg-6 col-md-4 col-sm-6 col-xs-8 ">
                 <select
                         class="form-control"
                         ng-model="chosenGroup"
@@ -88,10 +88,10 @@
         <br>
 
         <div class="control-group row">
-            <div class="col-lg-6 col-md-1 col-sm-3 col-xs-4">
+            <div class="col-lg-6 col-md-1 col-sm-6 col-xs-8 ">
                 <label>Search contact: </label>
             </div>
-            <div class="col-lg-6 col-md-4 col-sm-6 col-xs-6">
+            <div class="col-lg-6 col-md-4 col-sm-6 col-xs-8 ">
                 <input class="form-control" ng-model="filterName">
             </div>
         </div>
@@ -99,10 +99,10 @@
         <br>
 
         <div class="control-group row">
-            <div class="col-lg-6 col-md-1 col-sm-3 col-xs-4">
+            <div class="col-lg-6 col-md-1  col-sm-6 col-xs-8 ">
                 <label>Choose contact: </label>
             </div>
-            <div class="col-lg-6 col-md-4 col-sm-6 col-xs-6">
+            <div class="col-lg-6 col-md-4 col-sm-6 col-xs-8 ">
                 <select
                         class="form-control"
                         ng-model="chosenContact"
@@ -125,22 +125,22 @@
 <button class="btn btn-default" ng-show="isNewGroupModeActive || isNewModeActive" ng-click="cancelSaveFn()">Cancel</button>
 
 <!--------------------------------- CONTACT DETAILS --------------------------------->
-<div ng-show="!isNewModeActive && !isNewGroupModeActive" class="details" style="display: inline-block; width: 50%; vertical-align: top;">
+<div ng-show="!isNewModeActive && !isNewGroupModeActive" class="details" style="display: inline-block; width: 65%; vertical-align: top;">
     <div class="control-group row">
-        <div class="col-lg-2 col-md-1 col-sm-3 col-xs-4">
+        <div class="col-lg-2 col-md-1  col-sm-6 col-xs-8 ">
             <label class="control-label">Name: </label>
         </div>
-        <div class="col-lg-6 col-md-4 col-sm-6 col-xs-6">
+        <div class="col-lg-6 col-md-4  col-sm-6 col-xs-8 ">
              <input class="form-control" ng-model="chosenContact.name">
         </div>
     </div>
     <br>
 
     <div class="control-group row">
-        <div class="col-lg-2 col-md-1 col-sm-3 col-xs-4">
+        <div class="col-lg-2 col-md-1  col-sm-6 col-xs-8 ">
             <label class="control-label">Surname: </label>
         </div>
-        <div class="col-lg-6 col-md-4 col-sm-6 col-xs-6">
+        <div class="col-lg-6 col-md-4  col-sm-6 col-xs-8 ">
             <input class="form-control" ng-model="chosenContact.surname">
         </div>
     </div>
@@ -148,10 +148,10 @@
     <br>
 
     <div class="control-group row">
-        <div class="col-lg-2 col-md-1 col-sm-3 col-xs-4">
+        <div class="col-lg-2 col-md-1 col-sm-6 col-xs-8">
             <label class="control-label">Mobile: </label>
         </div>
-        <div class="col-lg-6 col-md-4 col-sm-6 col-xs-6">
+        <div class="col-lg-6 col-md-4 col-sm-6 col-xs-8">
             <input class="form-control" ng-model="chosenContact.tel">
         </div>
     </div>
@@ -159,10 +159,10 @@
     <br>
 
     <div class="control-group row">
-        <div class="col-lg-2 col-md-1 col-sm-3 col-xs-4">
+        <div class="col-lg-2 col-md-1 col-sm-6 col-xs-8 ">
             <label class="control-label">Change group: </label>
         </div>
-        <div class="col-lg-6 col-md-4 col-sm-6 col-xs-6">
+        <div class="col-lg-6 col-md-4 col-sm-6 col-xs-8 ">
             <select
                     class="form-control"
                     ng-model="changedGroup"
