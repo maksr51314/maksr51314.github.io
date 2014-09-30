@@ -102,7 +102,8 @@ angular.module('myApp.view1', ['ngRoute'])
         $scope.chosenGroup.splice( $scope.chosenGroup.indexOf( $scope.chosenContact ), 1 );
 
         //reset data
-        $scope.chosenContact = $scope.chosenGroup[ 0 ];
+        $scope.chosenGroup = $scope.model[ newGroup ];
+        $scope.chosenContact = $scope.chosenGroup[ $scope.chosenGroup.length - 1 ];
         $scope.newGroup = '';
     };
 
