@@ -65,6 +65,7 @@ angular.module('myApp.view1', ['ngRoute', 'ui.bootstrap'])
         //flags for control active edit states
         $scope.isNewModeActive = false;
         $scope.isNewGroupModeActive = false;
+        $scope.isEditModeActive = false;
 
         //default names for group and contact
         $scope.newGroup = '';

@@ -134,7 +134,7 @@
             <label class="control-label">Name: </label>
         </div>
         <div class="col-lg-6 col-md-4  col-sm-6 col-xs-8 ">
-             <input class="form-control" ng-model="chosenContact.name">
+            <input ng-disabled="!isEditModeActive" class="form-control" ng-model="chosenContact.name">
         </div>
     </div>
     <br>
@@ -144,7 +144,7 @@
             <label class="control-label">Surname: </label>
         </div>
         <div class="col-lg-6 col-md-4  col-sm-6 col-xs-8 ">
-            <input class="form-control" ng-model="chosenContact.surname">
+            <input ng-disabled="!isEditModeActive"  class="form-control" ng-model="chosenContact.surname">
         </div>
     </div>
 
@@ -155,7 +155,7 @@
             <label class="control-label">Mobile: </label>
         </div>
         <div class="col-lg-6 col-md-4 col-sm-6 col-xs-8">
-            <input class="form-control" ng-model="chosenContact.tel">
+            <input ng-disabled="!isEditModeActive" class="form-control" ng-model="chosenContact.tel">
         </div>
     </div>
 
@@ -167,6 +167,7 @@
         </div>
         <div class="col-lg-6 col-md-4 col-sm-6 col-xs-8 ">
             <select
+                    ng-disabled="!isEditModeActive"
                     class="form-control"
                     ng-model="changedGroup"
                     ng-options="group for group in groups"
@@ -176,12 +177,9 @@
     </div>
     <div class="text-center">
         <button class="btn btn-default" ng-click="deleteContactFn()">Delete</button>
+        <button class="btn btn-default" ng-click="isEditModeActive = !isEditModeActive">Edit</button>
     </div>
 </div>
-
-
-
-
 
 <!--------------------------------- MODEL --------------------------------->
 <!--<pre> {{model | json}} </pre>-->
