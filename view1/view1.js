@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('myApp.view1', ['ngRoute'])
+angular.module('myApp.view1', ['ngRoute', 'ui.bootstrap'])
 
 //add config for route provider
 .config(['$routeProvider', function($routeProvider) {
@@ -79,6 +79,7 @@ angular.module('myApp.view1', ['ngRoute'])
         $scope.saveNewGroupFn     = this.saveNewGroup.bind( this );
         $scope.cancelSaveFn       = this.cancelSave.bind( this );
         $scope.deleteContactFn    = this.deleteContact.bind( this );
+        $scope.selectNewTabFn     = this.selectNewTab.bind( this );
     }
 
     /**
@@ -193,6 +194,14 @@ angular.module('myApp.view1', ['ngRoute'])
     SimpleCtrl.prototype.deleteContact = function() {
         $scope.chosenGroup.splice( $scope.chosenGroup.indexOf( $scope.chosenContact ), 1 );
         $scope.chosenContact = {};
+    };
+
+    /**
+     * select new TAB
+     * @param item
+     */
+    SimpleCtrl.prototype.selectNewTab = function(item) {
+        $scope.chosenContact = item;
     };
 
     return new SimpleCtrl();

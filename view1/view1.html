@@ -103,11 +103,14 @@
                 <label>Choose contact: </label>
             </div>
             <div class="col-lg-6 col-md-4 col-sm-6 col-xs-8 ">
-                <select
-                        class="form-control"
-                        ng-model="chosenContact"
-                        ng-options="obj.name for obj in chosenGroup | filter:filterName"
-                ></select>
+                <tabset vertical="true">
+                    <tab heading="{{obj.name}}" ng-repeat="obj in chosenGroup | filter:filterName" select="selectNewTabFn( obj )"></tab>
+                </tabset>
+
+                <!--<select-->
+                        <!--class="form-control"-->
+                        <!--ng-model="chosenContact"-->
+                        <!--ng-options=""></select>-->
             </div>
         </div>
     </div>
