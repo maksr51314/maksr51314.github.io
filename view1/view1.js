@@ -187,11 +187,12 @@ angular.module('myApp.view1', ['ngRoute'])
         $scope.isNewGroupModeActive = false;
     };
 
+    /**
+    * delete contact
+    */
     SimpleCtrl.prototype.deleteContact = function() {
-
         $scope.chosenGroup.splice( $scope.chosenGroup.indexOf( $scope.chosenContact ), 1 );
         $scope.chosenContact = {};
-
     };
 
     return new SimpleCtrl();

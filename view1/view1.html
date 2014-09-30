@@ -114,8 +114,8 @@
 
     <div class="spacer"></div>
     <div class="row text-center">
-        <button class="btn btn-default" ng-show="!isNewGroupModeActive && !isNewModeActive" ng-click="addNewGroupFn()">Add new Group</button>
-        <button class="btn btn-default" ng-show="!isNewModeActive && !isNewGroupModeActive" ng-click="addNewContactFn()">Add new Contact</button>
+        <button class="btn btn-default" ng-click="addNewGroupFn()">Add new Group</button>
+        <button class="btn btn-default" ng-click="addNewContactFn()">Add new Contact</button>
     </div>
 </div>
 
@@ -171,8 +171,9 @@
                     ></select>
         </div>
     </div>
-
-    <button class="btn btn-default" ng-click="deleteContactFn()">Delete</button>
+    <div class="text-center">
+        <button class="btn btn-default" ng-click="deleteContactFn()">Delete</button>
+    </div>
 </div>
 
 
