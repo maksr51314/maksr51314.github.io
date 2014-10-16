@@ -18,12 +18,14 @@ angular.module('myApp.view1', ['ngRoute', 'ui.bootstrap'])
             {
                 name : 'someName',
                 surname: 'someSurname',
-                tel : 1
+                tel : 1,
+                email : 'kkk@kkk.com'
             },
             {
                 name : 'someName2',
                 surname: 'someSurname2',
-                tel : 2
+                tel : 2,
+                email : 'qqq@qqq.com'
             }
         ],
         group2 : [
@@ -40,10 +42,20 @@ angular.module('myApp.view1', ['ngRoute', 'ui.bootstrap'])
         ]
     };
 
+    var ALL_GPOUPS = 'All groups';
+
+    var VALIDATE_PATTERNS  = {
+        name : '0-9',
+        surname: '0-9',
+        email : '0-9',
+        tel : '0-9'
+    };
+
     var contactTemplate = {
         name : '',
         surname: '',
-        tel : ''
+        tel : '',
+        email : ''
     };
 
     /**
@@ -53,6 +65,11 @@ angular.module('myApp.view1', ['ngRoute', 'ui.bootstrap'])
         /************** definitions **************/
         //data from server
         $scope.model = modelTemplate;
+
+        $scope.optionsGroup = this.fetchOptionsGroup( $scope.model );
+
+        //validate patterns
+        $scope.validatePattern = VALIDATE_PATTERNS;
 
         //default chosen Group & Contact
         $scope.chosenGroup = modelTemplate[ this.getGroups()[0] ];
@@ -65,21 +82,22 @@ angular.module('myApp.view1', ['ngRoute', 'ui.bootstrap'])
         //flags for control active edit states
         $scope.isNewModeActive = false;
         $scope.isNewGroupModeActive = false;
-        $scope.isEditModeActive = false;
 
         //default names for group and contact
         $scope.newGroup = '';
         $scope.newContact = {};
 
         /*************** functions ***************/
-        $scope.changeChosenGroupFn = this.changeChosenGroup.bind( this );
+        $scope.changeChosenGroupFn= this.changeChosenGroup.bind( this );
         $scope.changeGtoupFn      = this.changeGroup.bind( this );
         $scope.addNewContactFn    = this.addNewContact.bind( this );
         $scope.saveNewContactFn   = this.saveNewContact.bind( this );
         $scope.addNewGroupFn      = this.addNewGroup.bind( this );
         $scope.saveNewGroupFn     = this.saveNewGroup.bind( this );
+        $scope.editContactFn      = this.editContact.bind( this );
         $scope.cancelSaveFn       = this.cancelSave.bind( this );
         $scope.deleteContactFn    = this.deleteContact.bind( this );
+        $scope.deleteGroupFn      = this.deleteGroup.bind( this );
         $scope.selectNewTabFn     = this.selectNewTab.bind( this );
     }
 
@@ -192,8 +210,8 @@ angular.module('myApp.view1', ['ngRoute', 'ui.bootstrap'])
     /**
     * delete contact
     */
-    SimpleCtrl.prototype.deleteContact = function() {
-        $scope.chosenGroup.splice( $scope.chosenGroup.indexOf( $scope.chosenContact ), 1 );
+    SimpleCtrl.prototype.deleteContact = function( index ) {
+        $scope.chosenGroup.splice( index, 1 );
         $scope.chosenContact = {};
     };
 
@@ -203,6 +221,31 @@ angular.module('myApp.view1', ['ngRoute', 'ui.bootstrap'])
      */
     SimpleCtrl.prototype.selectNewTab = function(item) {
         $scope.chosenContact = item;
+    };
+
+    SimpleCtrl.prototype.editContact = function() {
+        $scope.isNewModeActive = !$scope.isNewModeActive;
+    };
+
+    SimpleCtrl.prototype.fetchOptionsGroup = function( model ) {
+        var newOptions = [];
+
+        for ( var key in model ) {
+            model[ key ].forEach(function( item ) {
+                newOptions.push( item );
+            })
+        }
+
+        model[ ALL_GPOUPS ] = newOptions;
+
+        return model;
+    };
+
+    SimpleCtrl.prototype.deleteGroup = function( index ) {
+        delete $scope.model[ $scope.groups[ index ] ];
+
+        $scope.optionsGroup = this.fetchOptionsGroup( $scope.model );
+        $scope.chosenGroup = {};
     };
 
     return new SimpleCtrl();
